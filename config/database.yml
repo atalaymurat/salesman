@@ -76,10 +76,10 @@ test:
 # You can use this database configuration with:
 #
 #   production:
-#     url: <%= ENV['DATABASE_URL'] %>
+#     url: <%= Rails.application.credentials.database_url %>
 #
 production:
   <<: *default
-  database: salesman_production
-  username: salesman
-  password: <%= ENV['SALESMAN_DATABASE_PASSWORD'] %>
+  database: salesmandb
+  username: <%= Rails.application.credentials.database_user %>
+  password: <%= Rails.application.credentials.database_pass %>

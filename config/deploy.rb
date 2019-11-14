@@ -1,5 +1,6 @@
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.11.2"
+user = 'atalaymurat'
 
 set :application, "salesman"
 set :repo_url, "git@github.com:atalaymurat/salesman.git"
@@ -30,10 +31,11 @@ append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bund
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
 
 # Default value for local_user is ENV['USER']
-# set :local_user, -> { `git config user.name`.chomp }
+set :local_user, :user 
 
 # Default value for keep_releases is 5
 set :keep_releases, 3
 
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
+set :ssh_options, { :forward_agent => true }

@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @company.title %>
+</p>
+
+<p>
+  <strong>Web:</strong>
+  <%= @company.web %>
+</p>
+
+<p>
+  <strong>Vat:</strong>
+  <%= @company.vat %>
+</p>
+
+<% if @company.emails.present? %>
+<p>
+  <% @company.emails.each do |email| %>
+    <%= mail_to email.email %>
+  <% end %>
+</p>
+<% end %>
+
+<%= link_to 'Edit', edit_company_path(@company) %> |
+<%= link_to 'Back', companies_path %>

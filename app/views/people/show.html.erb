@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @person.name %>
+</p>
+
+<p>
+  <strong>Middle:</strong>
+  <%= @person.middle %>
+</p>
+
+<p>
+  <strong>Family:</strong>
+  <%= @person.family %>
+</p>
+
+<% if @person.emails.present? %>
+<p>
+  <% @person.emails.each do |email| %>
+    <%= mail_to email.email %>
+  <% end %>
+</p>
+<% end %>
+
+<%= link_to 'Edit', edit_person_path(@person) %> |
+<%= link_to 'Back', people_path %>

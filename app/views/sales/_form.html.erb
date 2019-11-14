@@ -1,0 +1,112 @@
+<%= form_with(model: sale, local: true) do |form| %>
+  <% if sale.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(sale.errors.count, "error") %> prohibited this sale from being saved:</h2>
+
+      <ul>
+      <% sale.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form-group">
+    <%= form.label :offer_type %>
+    <%= form.select :offer_type, ["Preforma", "Fiyat Teklifi - Offer", "Sipariş Onayı - Order Confirmation"],{}, {class: "form-control", prompt: "Select Offer Type"}  %>
+  </div>
+  
+  <div class="form-group">
+    <%= form.label :offer_no %>
+    <%= form.text_field :offer_no, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :currency %>
+    <%= form.select :currency, ["EUR", "USD", "TL"],{}, { class: "form-control", prompt:"Select Currency"} %>
+  </div>
+
+
+  <div class="form-group">
+    <%= form.label :company %>
+    <%= form.text_field :company, class:"form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :address %>
+    <%= form.text_field :address, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :person_id %>
+    <%= form.collection_select :person_id, Person.all, :id, :full_name ,{} ,{prompt: "Select person if exists", class: "form-control"}  %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :status %>
+    <%= form.text_field :status, class:"form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :payment %>
+    <%= form.select :payment, payment_hash.each { |k,v| [ v , k ]},{} ,{prompt: "Select payment..", class:"form-control"} %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :delivery_condition %>
+    <%= form.select :delivery_condition, delivery_condition_hash.each { |k, v| [v, k]},{} , {prompt: "select delivery...", class: "form-control"} %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :delivery_time %>
+    <%= form.text_field :delivery_time,{class: "form-control"} %>
+  </div>
+
+
+  <div class="form-group">
+    <%= form.label :discount %>
+    <%= form.text_field :discount, class:"form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :vat %>
+    <%= form.text_field :vat, class: "form-control" %>
+  </div>
+  
+  <div class="form-group">
+    <div class="form-row">
+    <div class="col">Code</div>
+    <div class="col-2">Brand</div>
+    <div class="col-5">Description</div>
+    <div class="col">Price</div>
+    <div class="col">Qty</div>
+    <div class="col">Remove</div>
+    </div>
+    <%= form.nested_fields_for :sale_items do |itemForm| %>
+  <div class="form-row mb-2">
+      <div class="col">
+      <%= itemForm.text_field :code, placeholder: "code..", class: "form-control"%>
+      </div>
+      <div class="col-2">
+      <%= itemForm.text_field :brand, placeholder: "brand..", class: "form-control" %>
+      </div>
+      <div class="col-5">
+      <%= itemForm.text_field :description, placeholder: "description..", class: "form-control" %>
+      </div>
+      <div class="col">
+      <%= itemForm.text_field :price, placeholder: "price..", class:"form-control" %>
+      </div>
+      <div class="col">
+      <%= itemForm.text_field :qty, placeholder: "qty..", class:"form-control" %>
+      </div>
+      <div class="col">
+      <%= itemForm.remove_nested_fields_link "X", class: "btn btn-sm btn-danger" %>
+      </div>
+  </div>
+    <% end %>
+    <%= form.add_nested_fields_link :sale_items, "Add Item" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

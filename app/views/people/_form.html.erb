@@ -1,0 +1,39 @@
+<%= form_with(model: person, local: true) do |form| %>
+  <% if person.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(person.errors.count, "error") %> prohibited this person from being saved:</h2>
+
+      <ul>
+      <% person.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :middle %>
+    <%= form.text_field :middle %>
+  </div>
+
+  <div class="field">
+    <%= form.label :family %>
+    <%= form.text_field :family %>
+  </div>
+
+  <%= form.nested_fields_for :emails do |eform| %>
+    <%= eform.label :email %>
+    <%= eform.text_field :email %>
+    <%= eform.remove_nested_fields_link "Remove" %>
+  <% end %>
+  <p> <%= form.add_nested_fields_link :emails, "Add Email" %>  </p>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

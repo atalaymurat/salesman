@@ -1,0 +1,253 @@
+<div class="preforma">
+  <table class="table-sm w-100">
+    <tr>
+      <td style="width:25%">
+        <%= image_tag image_url("/varolmakinalogo.png") %>
+      </td>
+      <td>
+        <b>VMM VAROL MAKİNA</b><br />
+        Ağaç İşleme Makinaları<br />
+        San. Tic. Ltd. Sti. <br />
+        www.varolmakina.com
+      </td>
+      <td>
+        Nato yolu Cad. No.62-64 <br />
+        Ümraniye İstanbul / Türkiye<br />
+        Tel. 90 216 420 6565 <br />
+        info@varolmakina.com
+      </td>
+      <td class="float-right">
+        <table class="table table-borderless table-sm">
+          <tr>
+            <td>Teklif-Offer No:</td>
+            <td>
+              <b><%= @sale.created_at.strftime("%Y")%>-<%= @sale.offer_no %></b>
+            </td>
+          </tr>
+          <tr>
+            <td>Tarih-Date:</td>
+            <td><b><%= @sale.updated_at.strftime("%d/%m/%Y") %></b></td>
+          </tr>
+          <tr>
+            <td>Geçerli-Valid:</td>
+            <td>
+              <b><%= (@sale.created_at + 21.day).strftime("%d/%m/%Y")%></b>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+
+  <table class="table table-sm table-borderless my-4">
+    <tr class="float-right">
+      <td class="">
+        <b class="text-uppercase"><%= @sale.company %></b><br />
+        <% if @sale.address.present? %>
+        <span class="text-capitalize"> <%= @sale.address %><br /> </span>
+
+        <% end %> <% if @sale.person.present? %> Sn.
+        <b class="text-capitalize"><%= @full_name %></b><br />
+        <% if @sale.person.emails.present? %>
+        <i class="far fa-envelope"> </i> <%= @sale.person.emails.first.email %>
+        <br />
+        <% end %> <% end %>
+      </td>
+    </tr>
+  </table>
+
+  <table cellpadding="0" cellspacing="0" class="table table-sm">
+    <tr class="heading">
+      <td colspan="6" class="text-center text-bold">
+        <h4><%= @sale.offer_type %></h4>
+      </td>
+    </tr>
+    <tr class="heading" style="background-color:#e30613">
+      <td style="width:5%"><b>Item</b></td>
+      <td class="text-nowrap" style="width:15%"><b>Marka-Brand</b></td>
+      <td style="width:45%"><b>Açıklama-Description</b></td>
+      <td class="text-center" style="width:15%"><b>Fiyat-Price</b></td>
+      <td class="right text-nowrap" style="width:5%"><b>Ad-Qty</b></td>
+      <td class="right" style="width:15%"><b>Toplam-Total</b></td>
+    </tr>
+
+    <% @sale.sale_items.reverse.each do |sale_item| %>
+    <tr class="item">
+      <td><%= sale_item.code %><br /></td>
+      <td>
+        <%= sale_item.brand %>
+      </td>
+      <td>
+        <small><%= sale_item.description %></small>
+      </td>
+
+      <td class="right text-nowrap">
+        <%= set_currency(sale_item.price, @sale.currency) %>
+      </td>
+
+      <td class="text-center">
+        <%= sale_item.qty %>
+      </td>
+
+      <td class="right text-nowrap">
+        <%= set_currency((sale_item.price * sale_item.qty), @sale.currency) %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
+
+  <table
+    cellpadding="0"
+    cellspacing="0"
+    class="table table-borderless table-sm"
+  >
+    <% if @sale.discount.present? or @sale.vat.present? and
+    @sale.sale_items.length > 1 %>
+    <tr>
+      <td colspan="4" class="right" style="width:80%">
+        <b>Ara Toplam-Subtotal</b>
+      </td>
+      <td class="right">
+        <%= set_currency(@sale.subtotal, @sale.currency) %>
+      </td>
+    </tr>
+    <% end %> <% if @sale.discount.present? and @sale.discount > 0 %>
+    <tr>
+      <td colspan="4" class="right">
+        <b>İndirim-Discount (<%= @sale.discount %>%)</b>
+      </td>
+      <td class="right">
+        - <%= set_currency(@sale.discount_calculated, @sale.currency) %>
+      </td>
+    </tr>
+    <% end %> <% if @sale.vat.present? %>
+    <tr>
+      <td colspan="4" class="right">
+        <b>KDV-VAT (<%= @sale.vat.round %>%)</b>
+      </td>
+      <td class="right">
+        + <%= set_currency(@sale.vat_calculated, @sale.currency) %>
+      </td>
+    </tr>
+    <% end %>
+
+    <tr class="heading">
+      <td colspan="4" class="right" style="width:80%">
+        <b>Toplam-Total:</b>
+      </td>
+      <td class="right">
+        <b>
+          <%= set_currency(@sale.total, @sale.currency) %>
+        </b>
+      </td>
+    </tr>
+  </table>
+
+  <div>
+    <p>Fiyatlara KDV dahil <b>değildir</b> - Prices do not include TAX</p>
+  </div>
+
+  <table class="table table-sm table-borderless" style="line-height:11px">
+    <span>Hesap Bilgileri-Account Info</span>
+    <tr>
+      <td colspan="2"><small>Banka-Bank</small></td>
+      <td><small>Şube-Branch</small></td>
+      <td><small>Hesap-Account No.</small></td>
+      <td><small>IBAN</small></td>
+      <td style="width:1%"></td>
+    </tr>
+    <tr>
+      <td colspan="2"><small>TÜRK EKONOMİ BANKASI A.Ş.</small></td>
+      <td><small>Santral Ümraniye</small></td>
+      <td><small>402-23652</small></td>
+      <td><small>TR95 0003 2000 4020 0000 0236 52</small></td>
+      <td><small>TL</small></td>
+    </tr>
+    <tr>
+      <td colspan="2"><small>TÜRK EKONOMİ BANKASI A.Ş.</small></td>
+      <td><small>Santral Ümraniye</small></td>
+      <td><small>402-23654</small></td>
+      <td><small>TR95 0003 2000 4020 0000 0236 54</small></td>
+      <td><small>EUR</small></td>
+    </tr>
+    <tr>
+      <td colspan="2"><small>TÜRK EKONOMİ BANKASI A.Ş.</small></td>
+      <td><small>Santral Ümraniye</small></td>
+      <td><small>402-23653</small></td>
+      <td><small>TR95 0003 2000 4020 0000 0236 53</small></td>
+      <td><small>USD</small></td>
+    </tr>
+  </table>
+
+  <table class="table table-bordered table-sm" style="line-height:14px">
+    <tr class="heading">
+      <td style="width:20%">Ödeme - Payment</td>
+      <td colspan="5"><small> <%= @sale.payment %> </small></td>
+    </tr>
+    <tr class="heading">
+      <td style="width:20%">Teslimat - Delivery</td>
+      <td colspan="5"><small> <%= @sale.delivery_condition %> </small></td>
+    </tr>
+    <tr class="heading">
+      <td style="width:20%;line-height:18px">Teslim Tarihi - Delivery Date</td>
+      <td colspan="5">
+        <small
+          >Kesin sipariş onayı ile ön ödeme alındıktan <%= @sale.delivery_time
+          %> hafta sonra - <%= @sale.delivery_time %> <%=
+          "week".pluralize(@sale.delivery_time.to_i) %> after the receipt of
+          official order by advance payment (or L/C)
+        </small>
+      </td>
+    </tr>
+    <tr class="heading">
+      <td style="width:20%; line-height:18px" rowspan="2">
+        Özel Şartlar Special Conditions
+      </td>
+      <td colspan="5" class="text-justify">
+        <small
+          >Makinalar kullanım hataları dışında tek vardiya çalışmakla imalat
+          hatalarına karşı 1 (BİR ) yıl garantilidir. Garanti kesinlikle
+          kullanma talimatlarına uygun çalışma neticesinde geçerli olacaktır.
+          Garanti müddeti içinde olacak kurulum ve servis ihtiyaçlarından teknik
+          servis ekibimizin yol + yemek + konaklama giderleri dışında ücret
+          alınmaz Makinaların çalıştırılması için gerekli olan elektrik, hava ve
+          toz emici tesisatı ALICI firma tarafından hazırlanacaktır. Makine
+          kurulumu için gerekli teknik şartların, tam olarak yerine
+          getirilmesinden itibaren VAROL MAKİNA teknik elemanları tarafından
+          ücretsiz olarak yapılacaktır.</small
+        >
+      </td>
+    </tr>
+    <tr>
+      <td class="text-justify">
+        <small
+          >The machines are guaranteed two year against manufacturing faults by
+          working one shift except the usage error and the warranty will be
+          valid for the period of operation in accordance with the operating
+          instructions. We will not be charged for the installation and service
+          needs that will be in the guarantee period except for the expenses of
+          the technical service’s road + food + accommodation. The electricity,
+          air and dust collector’s installations are necessary for the operation
+          of the machines shall be prepared by buyer.</small
+        >
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <small
+          >Tüm ilaveler ve teknik özellikler teklifimizde belirtildiği gibidir.<br />
+          Teknik teklifte belirtilenlerin dışında herhangi bir ek hizmet, ilave parça
+          veya özellikler fiyata dahil değildir.</small
+        >
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <small
+          >All additions and specifications are as stated in our offer.<br /> 
+          Any additional services or feutures other than those specified in the
+          technical offer, does not included to the price.</small>
+      </td>
+    </tr>
+  </table>
+</div>

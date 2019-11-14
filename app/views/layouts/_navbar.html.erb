@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+    <%= link_to "Salesman", root_path, class: "navbar-brand" %>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarNavAltMarkup"
+    aria-controls="navbarNavAltMarkup"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+    <%= link_to "Sales", sales_path, class: "nav-item nav-link" %>
+    <%= link_to "People", people_path, class: "nav-item nav-link" %>
+    <%= link_to "Products", products_path, class: "nav-item nav-link" %>
+    <%= link_to "Companies", companies_path, class: "nav-item nav-link" %>
+    </div>
+  </div>
+</nav>

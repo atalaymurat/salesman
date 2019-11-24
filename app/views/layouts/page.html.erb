@@ -12,9 +12,11 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body style="background-image: url('https://mdbootstrap.com/img/Photos/Others/images/91.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
     <%= render "layouts/navbar" %>
-    <div class="container-fluid">
+    <div 
+        class="container-fluid"> 
+      
     <% flash.each do |key, value| %>
       <div class="alert <%= flasherize(key)%>" role="alert"> <%= value %> </div>
     <% end %>

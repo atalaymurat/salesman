@@ -14,10 +14,10 @@
   <% if user_signed_in? %>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-    <%= link_to "Sales", sales_path, class: "nav-item nav-link" %>
-    <%= link_to "People", people_path, class: "nav-item nav-link" %>
     <%= link_to "Products", products_path, class: "nav-item nav-link" %>
+    <%= link_to "People", people_path, class: "nav-item nav-link" %>
     <%= link_to "Companies", companies_path, class: "nav-item nav-link" %>
+    <%= link_to "Sales", sales_path, class: "nav-item nav-link" %>
     </div>
   <% end %>
     <ul class="navbar-nav ml-auto">

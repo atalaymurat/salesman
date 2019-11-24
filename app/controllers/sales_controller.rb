@@ -69,18 +69,6 @@ class SalesController < ApplicationController
       if @sale.update(sale_params)
         format.html { redirect_to @sale, notice: 'Sale was successfully updated.' }
         format.json { render :show, status: :ok, location: @sale }
-        format.pdf do
-          render pdf: "VMM_TPF_#{@sale.updated_at}",
-          page_size: "A4",
-          template: "sales/show.html.erb",
-          orientation: "Portrait",
-          lowquality: true,
-          zoom: 1,
-          layout: "pdf.html.erb",
-          show_as_html: false,
-          encoding: "utf8",
-          dpi: 75
-        end
       else
         format.html { render :edit }
         format.json { render json: @sale.errors, status: :unprocessable_entity }

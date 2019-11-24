@@ -99,6 +99,7 @@ class SalesController < ApplicationController
                                    :status, 
                                    :discount,
                                    :payment,
+                                   :payment_details,
                                    :delivery_condition,
                                    :delivery_time,
                                    :person_id,

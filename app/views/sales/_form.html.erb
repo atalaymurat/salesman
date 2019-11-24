@@ -52,6 +52,11 @@
   </div>
 
   <div class="form-group">
+    <%= form.label :payment_details %>
+    <%= form.text_area :payment_details, class:"form-control"  %>
+  </div>
+
+  <div class="form-group">
     <%= form.label :delivery_condition %>
     <%= form.select :delivery_condition, delivery_condition_hash.each { |k, v| [v, k]},{} , {prompt: "select delivery...", class: "form-control"} %>
   </div>

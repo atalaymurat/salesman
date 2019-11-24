@@ -1,4 +1,17 @@
 module ApplicationHelper
+  def flasherize(key)
+    case key.to_sym
+    when :error
+      "alert-danger"
+    when :success
+      "alert-success"
+    when :notice
+      "alert-info"
+    else
+      "alert-warning"
+    end
+  end
+
   def number_to_euro(amount)
     number_to_currency(amount, unit: "EUR", separator: ",", delimiter:".", format: "%n %u")
   end

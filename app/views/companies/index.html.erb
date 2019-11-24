@@ -15,7 +15,7 @@
   <tbody>
     <% @companies.each do |company| %>
       <tr>
-        <td><%= company.title %></td>
+        <td class="text-capitalize"><%= company.title %></td>
         <td><%= company.web %></td>
         <td><%= company.vat %></td>
         <td><%= link_to 'Show', company %></td>

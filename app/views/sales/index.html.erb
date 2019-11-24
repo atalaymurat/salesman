@@ -8,7 +8,7 @@
       <th>Company</th>
       <th>Address</th>
       <th>Status</th>
-      <th>Discount</th>
+      <th>Total</th>
       <th>Vat</th>
       <th colspan="3"></th>
     </tr>
@@ -20,7 +20,7 @@
         <td><%= sale.company %></td>
         <td><%= sale.address %></td>
         <td><%= sale.status %></td>
-        <td><%= sale.discount %></td>
+        <td class="text-nowrap"><%= set_currency(sale.total, sale.currency) %></td>
         <td><%= sale.vat %></td>
         <td><%= link_to 'Show', sale %></td>
         <td><%= link_to 'Edit', edit_sale_path(sale) %></td>

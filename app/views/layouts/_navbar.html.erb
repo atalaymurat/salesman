@@ -1,7 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-    <%= link_to "Salesman", root_path, class: "navbar-brand" %>
   <button
-    class="navbar-toggler"
+    class="navbar-toggler mr-auto"
     type="button"
     data-toggle="collapse"
     data-target="#navbarNavAltMarkup"
@@ -11,6 +10,7 @@
   >
     <span class="navbar-toggler-icon"></span>
   </button>
+    <%= link_to "Salesman", root_path, class: "navbar-brand" %>
   <% if user_signed_in? %>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">

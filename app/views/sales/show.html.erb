@@ -98,7 +98,7 @@
   <table
     cellpadding="0"
     cellspacing="0"
-    class="table table-borderless table-sm table-responsive-sm"
+    class="table table-borderless table-sm"
   >
     <% if @sale.discount.present? or @sale.vat.present? and
     @sale.sale_items.length > 1 %>
@@ -146,7 +146,7 @@
     <p>Fiyatlara KDV dahil <b>değildir</b> - Prices do not include TAX</p>
   </div>
 
-  <table class="table table-sm table-borderless table-responsive-sm" style="line-height:11px">
+  <table class="table table-sm table-borderless" style="line-height:11px">
     <span>Hesap Bilgileri-Account Info</span>
     <tr>
       <td colspan="2"><small>Banka-Bank</small></td>
@@ -178,7 +178,7 @@
     </tr>
   </table>
 
-  <table class="table table-bordered table-sm table-responsive-sm" style="line-height:14px">
+  <table class="table table-bordered table-sm" style="line-height:14px">
     <tr class="heading">
       <td style="width:20%">Ödeme - Payment</td>
       <td colspan="5">

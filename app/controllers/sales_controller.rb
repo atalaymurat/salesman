@@ -21,7 +21,7 @@ class SalesController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        render pdf: "VMM_TPF_#{@sale.updated_at}",
+        render pdf: "VMM_#{@sale.company.split.first}_#{@sale.company.split[1]}_#{@sale.updated_at.strftime("%Y%m%d")}",
         page_size: "A4",
         template: "sales/show.html.erb",
         orientation: "Portrait",

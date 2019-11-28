@@ -12,8 +12,9 @@ module SalesHelper
   end
   def delivery_condition_hash
     {
-      "Ex-Works" => "İstanbul-Türkiye Depodan teslim - EXW Istanbul/TURKEY incoterms 2010",
-      "CIF-ISTANBUL" => "CIF-ISTANBUL Gümrüklerinden alıcıya devir edilecektir - CIF-ISTANBUL"
+      "Ex-Works" => "İstanbul-Türkiye Satıcı Depolarından teslim - EXW Istanbul/TURKEY incoterms 2010",
+      "CIF-ISTANBUL" => "CIF-ISTANBUL Gümrüklerinden alıcıya devir edilecektir - CIF-ISTANBUL",
+      "DAP buyer loc" => "Alıcı adresine araç üzerinde teslim edilecektir - DAP buyer location"
     }
   end
 end

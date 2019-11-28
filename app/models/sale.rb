@@ -1,7 +1,7 @@
 class Sale < ApplicationRecord
   has_many :sale_items, dependent: :destroy
   belongs_to :person, optional: true
-  accepts_nested_attributes_for :sale_items, allow_destroy: true, reject_if: proc { |attributes|   attributes['code'].blank? }
+  accepts_nested_attributes_for :sale_items, allow_destroy: true, reject_if: proc { |attributes|   attributes['price'].blank? }
 
   STATUS_CLASS = {
     :draft => "badge badge-secondary",

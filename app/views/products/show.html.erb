@@ -10,6 +10,17 @@
   <%= @product.description %>
 </p>
 
+<% if @product.pictures? %>
+  <div class="d-flex flex-row">
+  
+    <% @product.pictures.each do |pic| %>
+      <div class="p-2">
+      <%= image_tag pic.thumb.url %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
 <p>
   <strong>Unit price:</strong>
   <% if @product.currency == "EUR" %>

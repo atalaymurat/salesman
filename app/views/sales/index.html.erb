@@ -8,23 +8,24 @@
       <th>Company</th>
       <th>Address</th>
       <th>Status</th>
+      <th>Offer Type</th>
       <th>Total</th>
       <th>Vat</th>
-      <th colspan="3"></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @sales.each do |sale| %>
       <tr>
-        <td class="text-capitalize"><%= sale.company %></td>
+        <td class="text-capitalize"><%= link_to sale.company, sale %></td>
         <td><%= sale.address %></td>
         <td><%= sale.status %></td>
+        <td><%= sale.offer_type %></td>
         <td class="text-nowrap"><%= set_currency(sale.total, sale.currency) %></td>
         <td><%= sale.vat %></td>
-        <td><%= link_to 'Show', sale %></td>
-        <td><%= link_to 'Edit', edit_sale_path(sale) %></td>
-        <td><%= link_to 'Destroy', sale, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_sale_path(sale), class: "btn btn-primary btn-sm" %></td>
+        <td><%= link_to 'X', sale, {class: "btn btn-danger btn-sm", method: :delete, data: { confirm: 'Are you sure?' }} %></td>
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +33,4 @@
 
 <br>
 
-<%= link_to 'New Sale', new_sale_path %>
+<%= link_to 'New Sale', new_sale_path, class: "btn btn-success" %>

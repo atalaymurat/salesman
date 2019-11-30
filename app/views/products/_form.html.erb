@@ -16,6 +16,22 @@
     <%= form.text_field :item_code %>
   </div>
 
+    <% if product.pictures? %>
+      <div class="d-flex flex-row bg-info mb-2">
+    <% product.pictures.each do |pic, i| %>
+      <div class="p-2">
+        <%= image_tag pic.thumb.url %>
+        <%= hidden_field :product, :pictures, multiple: true, value: pic.identifier %>
+      </div>
+    <% end %>
+      </div>
+    <% end %>
+
+  <div class="form-group">
+    <%= form.label :pictures %>
+    <%= form.file_field :pictures, multiple: true %>
+  </div>
+
   <div class="field">
     <%= form.label :description %>
     <%= form.text_field :description %>

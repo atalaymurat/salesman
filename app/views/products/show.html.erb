@@ -15,7 +15,7 @@
   
     <% @product.pictures.each do |pic| %>
       <div class="p-2">
-      <%= image_tag pic.thumb.url %>
+      <%= image_tag pic.url(:thumb) %>
       </div>
     <% end %>
   </div>

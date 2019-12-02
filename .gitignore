@@ -17,6 +17,7 @@
 /storage/*
 !/storage/.keep
 /uploads/product/*
+public/uploads/product/*
 
 
 /node_modules

@@ -70,7 +70,7 @@
       <td class="right" style="width:15%"><b>Toplam-Total</b></td>
     </tr>
 
-    <% @sale.sale_items.each do |sale_item| %>
+    <% @sale.sale_items.sort_by(&:code).each do |sale_item| %>
     <tr class="item">
       <td><%= sale_item.code %><br /></td>
       <td>

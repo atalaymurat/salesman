@@ -1,36 +1,60 @@
+  <style>
+    .flex-even {
+      flex: 1; 
+    }
+  </style>
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Item code:</strong>
-  <%= @product.item_code %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @product.description %>
-</p>
-
-<% if @product.pictures? %>
-  <div class="d-flex flex-row">
-  
-    <% @product.pictures.each do |pic| %>
-      <div class="p-2">
-      <%= image_tag pic.url(:thumb) %>
+<div class="row">
+  <div class="col-md-6">
+        <h4>Specifications</h4>
+    <!-- flex part rows-->
+    <div class="d-flex flex-row">
+      <div class="flex-even">
+        <strong>Item code:</strong>
       </div>
-    <% end %>
+      <div class="flex-even">
+        <%= @product.item_code %>
+      </div>
+    </div>
+    <!-- flex part rows-->
+    <div class="d-flex flex-row">
+      <div class="flex-even">
+        <strong>Description:</strong>
+      </div>
+      <div class="flex-even">
+        <%= @product.description %>
+      </div>
+    </div>
+    <!-- flex part rows-->
+    <div class="d-flex flex-row">
+      <div class="flex-even">
+        <strong>Unit price:</strong>
+      </div>
+      <div class="flex-even">
+        <% if @product.currency == "EUR" %> <%=
+        number_to_euro(@product.unit_price) %> <% elsif @product.currency ==
+        "TL" %> <%= number_to_tl(@product.unit_price) %> <% elsif
+        @product.currency == "USD" %> <%= number_to_usd(@product.unit_price) %>
+        <% end %>
+      </div>
+    </div>
   </div>
-<% end %>
+  <!-- 2 nd part -->
+  <div class="col-md-6">
+        <h4>Pictures</h4>
+    <div class="d-flex align-content-around flex-wrap">
+        <% if @product.pictures? %>
+          <% @product.pictures.each do |pic| %>
+          <div class="p-2 border">
+            <%= image_tag pic.url(:thumb) %>
+          </div>
+          <% end %>
+        <% end %>
+    </div>
+  </div>
+</div>
+<!-- end of row  -->
+<hr />
 
-<p>
-  <strong>Unit price:</strong>
-  <% if @product.currency == "EUR" %>
-    <%= number_to_euro(@product.unit_price) %>
-  <% elsif @product.currency == "TL" %>
-    <%= number_to_tl(@product.unit_price) %>
-  <% elsif @product.currency == "USD" %>
-    <%= number_to_usd(@product.unit_price) %>
-  <% end %>
-</p>
-
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+<%= link_to 'Edit', edit_product_path(@product) %> | <%= link_to 'Back',
+products_path %>

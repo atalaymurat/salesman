@@ -40,13 +40,16 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
+    @remove_pictures = params[:product][:remove_pictures]
     # remove multiple pictures at index
-      params[:product][:remove_pictures].each do |k,v|
+    if @remove_pictures.present?
+      @remove_pictures.each do |k,v|
         if v == "1"
           @product.pictures.find(k.to_i).try(:remove!)
           @product.pictures.delete_at(k.to_i)
           @product.save
         end
+      end
     end
 
     respond_to do |format|

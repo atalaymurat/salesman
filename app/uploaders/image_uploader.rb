@@ -29,14 +29,32 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
+  def scale_and_crop(width, height)
+      manipulate! do |image|
+        image.tap(&:auto_orient)
+        image.combine_options do |c|
+          c.gravity 'Center'
+          c.resize "#{width}x#{height}" 
+          c.crop "#{width}x#{height}+0+0"
+          c.background 'white' #transparent, none
+          c.extent "#{width}x#{height}"
+        end
+        image
+      end
+  end
+
   version :thumb do
      process resize_to_fit: [100, 100]
+  end
+
+  version :medium do
+    process scale_and_crop: [250, 250]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
   def extension_whitelist
-     %w(jpg jpeg gif png)
+     %w(jpg jpeg gif png tiff gif svg)
   end
 
   # Override the filename of the uploaded files:

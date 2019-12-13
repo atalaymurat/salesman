@@ -1,60 +1,82 @@
-  <style>
-    .flex-even {
-      flex: 1; 
-    }
-  </style>
+<style>
+  .flex-even {
+    flex: 1;
+  }
+</style>
 <p id="notice"><%= notice %></p>
-<div class="row">
-  <div class="col-md-6">
-        <h4>Specifications</h4>
-    <!-- flex part rows-->
-    <div class="d-flex flex-row">
-      <div class="flex-even">
-        <strong>Item code:</strong>
-      </div>
-      <div class="flex-even">
-        <%= @product.item_code %>
-      </div>
-    </div>
-    <!-- flex part rows-->
-    <div class="d-flex flex-row">
-      <div class="flex-even">
-        <strong>Description:</strong>
-      </div>
-      <div class="flex-even">
-        <%= @product.description %>
-      </div>
-    </div>
-    <!-- flex part rows-->
-    <div class="d-flex flex-row">
-      <div class="flex-even">
-        <strong>Unit price:</strong>
-      </div>
-      <div class="flex-even">
-        <% if @product.currency == "EUR" %> <%=
-        number_to_euro(@product.unit_price) %> <% elsif @product.currency ==
-        "TL" %> <%= number_to_tl(@product.unit_price) %> <% elsif
-        @product.currency == "USD" %> <%= number_to_usd(@product.unit_price) %>
-        <% end %>
-      </div>
-    </div>
-  </div>
-  <!-- 2 nd part -->
-  <div class="col-md-6">
-        <h4>Pictures</h4>
-    <div class="d-flex align-content-around flex-wrap">
-        <% if @product.pictures? %>
-          <% @product.pictures.each do |pic| %>
-          <div class="p-2 border">
-            <%= image_tag pic.url(:thumb) %>
-          </div>
-          <% end %>
-        <% end %>
-    </div>
+<!-- row top header -->
+<div class="d-flex flex-row mb-2">
+  <div class="mr-auto p-2">
+    <h3>
+      Title
+    </h3>
   </div>
 </div>
-<!-- end of row  -->
-<hr />
-
-<%= link_to 'Edit', edit_product_path(@product) %> | <%= link_to 'Back',
-products_path %>
+<div class="row">
+  <div class="col-md-6">
+    <!-- Price part rows-->
+    <div class="d-flex flex-column my-2 border">
+      <div class="p-2 bg-warning text-white border-bottom">
+        <spam class="h5">Price</spam>
+      </div>
+      <div class="p-2 text-center bg-clear text-secondary">
+        <h3>
+          <% if @product.unit_price.present? %> <% if @product.currency == "EUR"
+          %> <%= number_to_euro(@product.unit_price) %> <% elsif
+          @product.currency == "TL" %> <%= number_to_tl(@product.unit_price) %>
+          <% elsif @product.currency == "USD" %> <%=
+          number_to_usd(@product.unit_price) %> <% end %> <% else %>
+          <spam>Price on request</spam>
+          <% end %>
+        </h3>
+      </div>
+    </div>
+    <!-- End of Price Part-->
+    <!-- flex part rows-->
+    <div class="d-flex flex-column border my-2">
+      <div class="p-2 bg-warning text-white border-bottom">
+        <spam class="h5">General Descriptions</spam>
+      </div>
+      <div class="d-flex flex-row p-2 border-bottom">
+        <div class="flex-even">
+          <strong>Item code:</strong>
+        </div>
+        <div class="flex-even">
+          <%= @product.item_code %>
+        </div>
+      </div>
+      <!-- flex part rows-->
+      <div class="d-flex flex-row p-2 border-bottom">
+        <div class="flex-even">
+          <strong>Description:</strong>
+        </div>
+        <div class="flex-even">
+          <%= @product.description %>
+        </div>
+      </div>
+    </div>
+    <%= link_to 'Edit', edit_product_path(@product) %> | <%= link_to 'Back',
+    products_path %>
+  </div>
+  <!-- right side  -->
+  <div class="col-md-6">
+    <% if @product.pictures? %>
+    <!-- Pictures blok  -->
+    <div class="d-flex flex-column my-2 border">
+      <div class="p-2 bg-warning text-white border-bottom">
+        <spam class="h5">Pictures</spam>
+      </div>
+      <div class="d-flex align-content-around flex-wrap">
+        <% if @product.pictures? %> <% @product.pictures.each do |pic| %>
+        <div class="p-2 border-bottom">
+          <%= image_tag pic.url(:medium) %>
+        </div>
+        <% end %> <% end %>
+      </div>
+    </div>
+    <!-- end of pictures -->
+    <% end %>
+  </div>
+  <!-- end of row  -->
+  <hr />
+</div>

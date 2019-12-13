@@ -40,6 +40,15 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
+    # remove multiple pictures at index
+      params[:product][:remove_pictures].each do |k,v|
+        if v == "1"
+          @product.pictures.find(k.to_i).try(:remove!)
+          @product.pictures.delete_at(k.to_i)
+          @product.save
+        end
+    end
+
     respond_to do |format|
       if @product.update(product_params)
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
@@ -63,6 +72,7 @@ class ProductsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+
     def set_product
       @product = Product.find(params[:id])
     end
@@ -74,7 +84,7 @@ class ProductsController < ApplicationController
         :description, 
         :unit_price, 
         :currency,
-        pictures: []
+        pictures: [],
       )
     end
 end

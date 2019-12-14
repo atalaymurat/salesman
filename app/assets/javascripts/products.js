@@ -1,2 +1,13 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
+// Add the following code if you want the name of the file appear on select
+$(document).on('ready turbolinks:load', function() {
+  $('.custom-file-input').on('change', function() {
+    var fileName = $(this)
+      .val()
+      .split('\\')
+      .pop();       
+    $(this)
+      .siblings('.custom-file-label')
+      .addClass('selected')
+      .html(fileName);
+  });
+});

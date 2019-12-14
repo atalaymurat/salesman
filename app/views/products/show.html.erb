@@ -3,7 +3,6 @@
     flex: 1;
   }
 </style>
-<p id="notice"><%= notice %></p>
 <!-- row top header -->
 <div class="d-flex flex-row mb-2">
   <div class="mr-auto p-2">
@@ -66,10 +65,10 @@
       <div class="p-2 bg-warning text-white border-bottom">
         <spam class="h5">Pictures</spam>
       </div>
-      <div class="d-flex align-content-around flex-wrap">
+      <div class="d-flex flex-wrap justify-content-center">
         <% if @product.pictures? %> <% @product.pictures.each do |pic| %>
         <div class="p-2 border-bottom">
-          <%= image_tag pic.url(:medium) %>
+          <%= image_tag pic.url(:medium), class: "img-fluid" %>
         </div>
         <% end %> <% end %>
       </div>

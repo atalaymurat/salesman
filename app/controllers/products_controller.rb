@@ -15,7 +15,6 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
-    @product.brands.build
   end
 
   # GET /products/1/edit

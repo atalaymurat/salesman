@@ -15,7 +15,7 @@
   <div class="col-md-6">
     <!-- Price part rows-->
     <div class="d-flex flex-column my-2 border">
-      <div class="p-2 bg-warning text-white border-bottom">
+      <div class="p-2 bg-dark text-white border-bottom">
         <spam class="h5">Price</spam>
       </div>
       <div class="p-2 text-center bg-clear text-secondary">
@@ -33,9 +33,10 @@
     <!-- End of Price Part-->
     <!-- flex part rows-->
     <div class="d-flex flex-column border my-2">
-      <div class="p-2 bg-warning text-white border-bottom">
+      <div class="p-2 bg-dark text-white border-bottom">
         <spam class="h5">General</spam>
       </div>
+      <!-- flex part item row-->
       <div class="d-flex flex-row p-2 border-bottom">
         <div class="flex-even">
           <strong>Item code:</strong>
@@ -44,6 +45,37 @@
           <%= @product.item_code %>
         </div>
       </div>
+      <!-- flex part item row end-->
+      <!-- flex part item row-->
+      <div class="d-flex flex-row p-2 border-bottom">
+        <div class="flex-even">
+          <strong>Brand:</strong>
+        </div>
+        <div class="flex-even">
+          <%= @product.brand_name %>
+        </div>
+      </div>
+      <!-- flex part item row end-->
+      <!-- flex part item row-->
+      <div class="d-flex flex-row p-2 border-bottom">
+        <div class="flex-even">
+          <strong>Model Year:</strong>
+        </div>
+        <div class="flex-even">
+          <%= @product.model_year %>
+        </div>
+      </div>
+      <!-- flex part item row end-->
+      <!-- flex part item row-->
+      <div class="d-flex flex-row p-2 border-bottom">
+        <div class="flex-even">
+          <strong>Model Code:</strong>
+        </div>
+        <div class="flex-even">
+          <%= @product.model_code %>
+        </div>
+      </div>
+      <!-- flex part item row end-->
       <!-- flex part rows-->
       <div class="d-flex flex-row p-2 border-bottom">
         <div class="flex-even">
@@ -62,7 +94,7 @@
     <% if @product.pictures? %>
     <!-- Pictures blok  -->
     <div class="d-flex flex-column my-2 border">
-      <div class="p-2 bg-warning text-white border-bottom">
+      <div class="p-2 bg-dark text-white border-bottom">
         <spam class="h5">Pictures</spam>
       </div>
       <div class="d-flex flex-wrap justify-content-center">

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_16_133628) do
+ActiveRecord::Schema.define(version: 2019_12_25_154148) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,7 +60,9 @@ ActiveRecord::Schema.define(version: 2019_12_16_133628) do
     t.string "model_code"
     t.integer "model_year"
     t.bigint "brand_id"
+    t.bigint "technology_id"
     t.index ["brand_id"], name: "index_products_on_brand_id"
+    t.index ["technology_id"], name: "index_products_on_technology_id"
   end
 
   create_table "sale_items", force: :cascade do |t|
@@ -95,6 +97,16 @@ ActiveRecord::Schema.define(version: 2019_12_16_133628) do
     t.index ["person_id"], name: "index_sales_on_person_id"
   end
 
+  create_table "technologies", force: :cascade do |t|
+    t.string "name"
+    t.string "img"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "ancestry"
+    t.index ["ancestry"], name: "index_technologies_on_ancestry"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -115,6 +127,7 @@ ActiveRecord::Schema.define(version: 2019_12_16_133628) do
   add_foreign_key "emails", "companies"
   add_foreign_key "emails", "people"
   add_foreign_key "products", "brands"
+  add_foreign_key "products", "technologies"
   add_foreign_key "sale_items", "sales"
   add_foreign_key "sales", "people"
 end

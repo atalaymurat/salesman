@@ -45,3 +45,4 @@ gem 'carrierwave', '~> 2.0', '>= 2.0.2'
 gem 'mini_magick', '~> 4.9', '>= 4.9.5'
 gem 'fog-google', '~> 1.9', '>= 1.9.1'
 gem "mime-types"
+gem 'ancestry'

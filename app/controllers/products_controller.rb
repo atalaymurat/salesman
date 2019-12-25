@@ -79,6 +79,7 @@ class ProductsController < ApplicationController
         :model_year,
         :model_code,
         :brand_name,
+        :technology_name,
         pictures: [],
       )
     end

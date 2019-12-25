@@ -8,6 +8,7 @@
       <th>Picture</th>
       <th>Item code</th>
       <th>Brand</th>
+      <th>Technology</th>
       <th>Unit price</th>
       <th></th>
     </tr>
@@ -19,6 +20,7 @@
         <td> <%= image_tag product.pictures.first.url(:thumb) if product.pictures.present? %>  </td>
         <td><%= product.item_code %></td>
         <td><%= product.brand_name %></td>
+        <td><%= product.technology_name %></td>
         <td>
           <% if product.currency == "EUR" %>
             <%= number_to_euro(product.unit_price) %>

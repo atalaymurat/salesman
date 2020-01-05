@@ -5,8 +5,21 @@ class Product < ApplicationRecord
   belongs_to :technology
 
   def auto_code
-    new_code = "P" + Time.now.strftime('%y').to_s + (Product.last.id + 1).to_s
+    new_code = "P" + Time.now.strftime('%y').to_s + 
+      if Product.last.present? 
+        (Product.last.id + 1).to_s
+      else
+        1.to_s
+      end
       self.item_code = new_code
+  end
+
+  def title
+    brand = self.brand.present? ? self.brand.name : ""  
+    technology = self.technology.present? ? self.technology.name : "" 
+    code = self.model_code.present? ? self.model_code : ""
+
+    brand.capitalize + " " + technology.capitalize + " " + code.titleize    
   end
 
   def brand_name=(name)

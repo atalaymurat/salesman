@@ -1,14 +1,11 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Products</h1>
 
 <table class="table table-responsive-sm">
   <thead>
     <tr>
+      <th>Title</th>
       <th>Picture</th>
       <th>Item code</th>
-      <th>Brand</th>
-      <th>Technology</th>
       <th>Unit price</th>
       <th></th>
     </tr>
@@ -17,10 +14,9 @@
   <tbody>
     <% @products.each do |product| %>
       <tr>
-        <td> <%= image_tag product.pictures.first.url(:thumb) if product.pictures.present? %>  </td>
-        <td><%= product.item_code %></td>
-        <td><%= product.brand_name %></td>
-        <td><%= product.technology_name %></td>
+        <td><%= link_to(product.title, product) %></td>
+        <td> <%= link_to(image_tag(product.pictures.first.url(:thumb)), product) if product.pictures.present? %>  </td>
+        <td><%= link_to(product.item_code, product) %></td>
         <td>
           <% if product.currency == "EUR" %>
             <%= number_to_euro(product.unit_price) %>
@@ -30,7 +26,7 @@
             <%= number_to_usd(product.unit_price) %>
           <% end %>
         </td>
-        <td><%= link_to 'Show', product, class: "btn-primary btn-sm" %>
+        <td>
         <%= link_to 'Edit', edit_product_path(product), class: "btn-success btn-sm" %>
         <%= link_to 'Destroy', product, {method: :delete, data: { confirm: 'Are you sure?' },class: "btn-danger btn-sm"} %></td>
       </tr>

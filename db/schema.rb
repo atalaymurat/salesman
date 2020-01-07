@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_25_154148) do
+ActiveRecord::Schema.define(version: 2020_01_07_072746) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,8 @@ ActiveRecord::Schema.define(version: 2019_12_25_154148) do
     t.integer "model_year"
     t.bigint "brand_id"
     t.bigint "technology_id"
+    t.string "offer_type"
+    t.string "condition"
     t.index ["brand_id"], name: "index_products_on_brand_id"
     t.index ["technology_id"], name: "index_products_on_technology_id"
   end

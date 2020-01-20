@@ -104,9 +104,6 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    colorbox-rails (0.1.2)
-      jquery-rails
-      rails (>= 3.1.1)
     concurrent-ruby (1.1.5)
     crass (1.0.5)
     declarative (0.0.10)
@@ -331,7 +328,6 @@ DEPENDENCIES
   capybara (>= 2.15)
   carrierwave (~> 2.0, >= 2.0.2)
   chromedriver-helper
-  colorbox-rails (~> 0.1.2)
   devise
   fog-google (~> 1.9, >= 1.9.1)
   hirb (~> 0.7.3)

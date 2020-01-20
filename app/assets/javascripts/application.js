@@ -14,7 +14,6 @@
 //= require jquery_ujs
 //= require nested_form_fields
 //= require activestorage
-//= require colorbox-rails
 //= require turbolinks
 //= require popper
 //= require bootstrap

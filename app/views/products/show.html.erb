@@ -146,7 +146,7 @@
       <div class="d-flex flex-wrap justify-content-center">
         <% if @product.pictures? %> <% @product.pictures.each do |pic| %>
         <div class="p-2 border-bottom">
-          <%= link_to image_tag(pic.url(:medium), class: "img-fluid"), pic.url, :data => { :colorbox => true, :colorbox_static => true, :colorbox_max_width => '70%', :turbolinks => false}  %>
+          <%= image_tag(pic.url(:medium), class: "img-fluid")  %>
         </div>
         <% end %> <% end %>
       </div>

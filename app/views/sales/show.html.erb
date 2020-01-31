@@ -48,7 +48,9 @@
         <% end %> <% if @sale.person.present? %> Sn.
         <b class="text-capitalize"><%= @full_name %></b><br />
         <% if @sale.person.emails.present? %>
-        <i class="far fa-envelope"> </i> <%= @sale.person.emails.first.email %>
+          <% @sale.person.emails.each do |email| %>
+            <i class="far fa-envelope"> </i> <%= email.email %>
+          <% end %>
         <br />
         <% end %> <% end %>
       </td>
@@ -113,7 +115,7 @@
     <% end %> <% if @sale.discount.present? and @sale.discount > 0 %>
     <tr>
       <td colspan="4" class="right">
-        <b>İndirim-Discount (<%= @sale.discount %>%)</b>
+        <b>İndirim-Discount (<%= @sale.discount.round %>%)</b>
       </td>
       <td class="right">
         - <%= set_currency(@sale.discount_calculated, @sale.currency) %>

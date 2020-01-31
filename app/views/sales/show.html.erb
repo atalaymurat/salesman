@@ -41,7 +41,12 @@
   <table class="table table-sm table-borderless my-4 table-responsive-sm">
     <tr>
       <td class="">
-        <b class="text-uppercase"><%= @sale.company %></b><br />
+        <% if @sale.company.present? %>
+          <b class="text-uppercase"><%= @sale.company.title %></b><br />
+        <% else %>
+         <b class="text-uppercase"><%= @sale.company_title %></b><br />
+        <% end %>
+
         <% if @sale.address.present? %>
         <span class="text-capitalize"> <%= @sale.address %><br /> </span>
 

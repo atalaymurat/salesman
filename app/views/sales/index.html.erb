@@ -18,7 +18,11 @@
   <tbody>
     <% @sales.each do |sale| %>
       <tr>
-        <td class="text-capitalize"><%= link_to sale.company, sale %></td>
+        <% if sale.company.present? %>
+        <td class="text-capitalize"><%= link_to sale.company.title, sale %></td>
+      <% else %>
+        <td class="text-capitalize"><%= link_to sale.company_title, sale %></td>
+      <% end %>
         <td><%= sale.address %></td>
         <td><%= sale.status %></td>
         <td><%= sale.offer_type %></td>

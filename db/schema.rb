@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_07_072746) do
+ActiveRecord::Schema.define(version: 2020_01_31_143512) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,7 +81,7 @@ ActiveRecord::Schema.define(version: 2020_01_07_072746) do
   end
 
   create_table "sales", force: :cascade do |t|
-    t.string "company"
+    t.string "company_title"
     t.string "address"
     t.string "status"
     t.decimal "discount"
@@ -96,6 +96,8 @@ ActiveRecord::Schema.define(version: 2020_01_07_072746) do
     t.string "currency"
     t.string "offer_no"
     t.text "payment_details"
+    t.bigint "company_id"
+    t.index ["company_id"], name: "index_sales_on_company_id"
     t.index ["person_id"], name: "index_sales_on_person_id"
   end
 
@@ -131,5 +133,6 @@ ActiveRecord::Schema.define(version: 2020_01_07_072746) do
   add_foreign_key "products", "brands"
   add_foreign_key "products", "technologies"
   add_foreign_key "sale_items", "sales"
+  add_foreign_key "sales", "companies"
   add_foreign_key "sales", "people"
 end

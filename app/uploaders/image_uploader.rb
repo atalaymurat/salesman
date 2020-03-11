@@ -36,7 +36,7 @@ class ImageUploader < CarrierWave::Uploader::Base
           c.gravity 'Center'
           c.resize "#{width}x#{height}" 
           c.crop "#{width}x#{height}+0+0"
-          c.background 'white' #transparent, none
+          c.background '#343a40' #transparent, none
           c.extent "#{width}x#{height}"
         end
         image

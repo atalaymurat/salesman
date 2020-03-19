@@ -3,9 +3,9 @@ module SalesHelper
        
       { "Nakit Ödeme" =>  "Nakit ödeme olarak fiyatlandırılmıştır. - Cash payment before shipment" , 
         "%20 siparişte" => "%20 siparişte, %80 bakiyesi makina fabrikadan sevkiyata hazır olduğunda - T/T 20% advance payment with order, 80% on advice goods ready for delivery",
-        "%30 siparişte" => "%30 siparişte, %70 bakiyesi makina fabrikadan sevkiyata hazır olduğunda - T/T 20% advance payment with order, 80% on advice goods ready for delivery",
+        "%30 siparişte" => "%30 siparişte, %70 bakiyesi makina fabrikadan sevkiyata hazır olduğunda - T/T 30% advance payment with order, 70% on advice goods ready for delivery",
       "Karşılıklı Görüşme" => "Karşılıklı görüşmeler neticesinde belirlenecektir - Will be clearify after negotiations",
-        "Yüklemeden Önce" => "%20 siparişte, %80 bakiyesi makina sevkiyata hazır olduğunda - 20% advance payment with order, 80% on advice goods ready for delivery",
+        "Ön Ödeme %100" => "%100 siparişte nakden - T/T 100% advance payment with order",
         "Vadeli" => "Belirlenen vadelerde ödenecektir",
       
       }

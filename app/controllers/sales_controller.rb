@@ -6,7 +6,7 @@ class SalesController < ApplicationController
   # GET /sales
   # GET /sales.json
   def index
-    @sales = Sale.all
+    @sales = Sale.all.order('id DESC')
   end
 
   # GET /sales/1

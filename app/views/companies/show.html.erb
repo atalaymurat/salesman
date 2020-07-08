@@ -23,5 +23,42 @@
 </p>
 <% end %>
 
+<% if @company.sales.present? %>
+<table class="table table-responsive-sm">
+  <thead>
+    <tr>
+      <th colspan="8" class="text-center bg-success text-white h3">Company Sales</th>
+    </tr>
+    <tr>
+      <th>Created At</th>
+      <th>Address</th>
+      <th>Status</th>
+      <th>Offer Type</th>
+      <th>Total</th>
+      <th>Vat</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @company.sales.order('created_at DESC').each do |sale| %>
+      <tr>
+        <td class="text-capitalize"><%= link_to sale.created_at.strftime("%Y/%b/%d -%a -week %V"), sale %></td>
+        <td><%= sale.address %></td>
+        <td><%= sale.status %></td>
+        <td><%= sale.offer_type %></td>
+        <td class="text-nowrap"><%= set_currency(sale.total, sale.currency) %></td>
+        <td><%= sale.vat %></td>
+        <td><%= link_to 'Edit', edit_sale_path(sale), class: "btn btn-primary btn-sm" %></td>
+        <td><%= link_to 'X', sale, {class: "btn btn-danger btn-sm", method: :delete, data: { confirm: 'Are you sure?' }} %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+
+<% end %>
 <%= link_to 'Edit', edit_company_path(@company) %> |
 <%= link_to 'Back', companies_path %>

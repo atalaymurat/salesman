@@ -177,8 +177,9 @@
         Özel Şartlar Special Conditions
       </td>
       <td colspan="5" class="text-justify">
+        <% if @sale.waranty %>
         <small
-          >Makinalar kullanım hataları dışında tek vardiya çalışmakla imalat
+          >Yeni makinalar kullanım hataları dışında tek vardiya çalışmakla imalat
           hatalarına karşı 1 (BİR) yıl garantilidir. Garanti kesinlikle
           kullanma talimatlarına uygun çalışma neticesinde geçerli olacaktır.
           Garanti müddeti içinde olacak kurulum ve servis ihtiyaçlarından teknik
@@ -189,10 +190,21 @@
           getirilmesinden itibaren SATICI teknik elemanları tarafından
           ücretsiz olarak yapılacaktır.</small
         >
+      <% else%>
+        <small
+          >Makinaların çalıştırılması için gerekli olan elektrik, hava ve
+          toz emici tesisatı ALICI firma tarafından hazırlanacaktır. Makine
+          kurulumu için gerekli teknik şartların, tam olarak yerine
+          getirilmesinden itibaren, eğer istenilir ise kurulum SATICI teknik elemanları tarafından
+          ücretli olarak yapılacaktır.</small
+        >
+
+      <% end %>
       </td>
     </tr>
     <tr>
       <td class="text-justify">
+        <% if @sale.waranty %>
         <small
           >The machines are guaranteed 1 (ONE) year against manufacturing faults by
           working one shift except the usage error and the warranty will be
@@ -203,6 +215,13 @@
           air and dust collector’s installations are necessary for the operation
           of the machines shall be prepared by buyer.</small
         >
+      <% else%>
+        <small
+          >The electricity,
+          air and dust collector’s installations are necessary for the operation
+          of the machines shall be prepared by buyer. Cost of installation is not included to the price</small
+        >
+      <% end %>
       </td>
     </tr>
     <tr>

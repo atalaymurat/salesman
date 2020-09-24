@@ -102,6 +102,7 @@ class SalesController < ApplicationController
                                    :payment,
                                    :payment_details,
                                    :delivery_condition,
+                                   :waranty,
                                    :delivery_time,
                                    :person_id,
                                    :offer_type,

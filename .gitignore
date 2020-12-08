@@ -18,6 +18,7 @@
 !/storage/.keep
 /uploads/product/*
 public/uploads/product/*
+config/deploy
 
 
 /node_modules

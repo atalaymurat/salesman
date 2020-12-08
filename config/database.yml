@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: salesmandb
+  database: salesman
   username: <%= Rails.application.credentials.database_user %>
   password: <%= Rails.application.credentials.database_pass %>

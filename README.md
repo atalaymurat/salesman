@@ -1,3 +1,16 @@
+install imagemagick command-line
+
+for ubuntu 
+sudo apt install imagemagick
+
+Also for pdf generation using wicked pdf 
+install if there is any needed package for your system
+for Ubuntu 20.04 focal
+wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.focal_amd64.deb
+sudo apt install ./wkhtmltox_0.12.6-1.focal_amd64.deb
+
+
+
 # README
 
 This README would normally document whatever steps are necessary to get the

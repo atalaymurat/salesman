@@ -18,7 +18,7 @@
 !/storage/.keep
 /uploads/product/*
 public/uploads/product/*
-config/deploy
+config/deploy/production.rb
 
 
 /node_modules

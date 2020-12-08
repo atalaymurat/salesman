@@ -26,7 +26,7 @@ require "capistrano/rails/assets"
 require "capistrano/rails/migrations"
 
 set :rbenv_type, :user
-set :rbenv_ruby, '2.6.5'
+set :rbenv_ruby, '2.7.2'
 #
 #   https://github.com/capistrano/rvm
 #   https://github.com/capistrano/rbenv

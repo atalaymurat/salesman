@@ -41,7 +41,7 @@ gem 'capistrano-rails', '~> 1.4'
 gem 'capistrano-passenger', '~> 0.2.0'
 gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.4'
 gem 'devise'
-gem 'carrierwave', '~> 2.0', '>= 2.0.2'
+gem 'carrierwave', '~> 2.1'
 gem 'mini_magick', '~> 4.9', '>= 4.9.5'
 gem 'fog-google', '~> 1.9', '>= 1.9.1'
 gem "mime-types"
